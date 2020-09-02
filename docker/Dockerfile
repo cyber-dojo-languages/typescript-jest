@@ -15,6 +15,9 @@ ENV SHA=${GIT_COMMIT_SHA}
 
 LABEL maintainer=jon@jaggersoft.com
 
-RUN npm install --global jest typescript ts-jest ts-lib
+RUN mkdir /etc/ts
+WORKDIR /etc/ts
+COPY package.json .
+RUN npm install
 
 COPY red_amber_green.rb /usr/local/bin
