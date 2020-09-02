@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "@types/jest": "*",
+    "jest": "*",
+    "ts-jest": "*",
+    "ts-lib": "*",
+    "typescript": "*",
+    "strip-ansi-cli": "*"
+  }
+}
