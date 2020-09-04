@@ -1,5 +1,6 @@
 FROM cyberdojofoundation/javascript-node:29eb2ed
 LABEL maintainer=jon@jaggersoft.com
+LABEL maintainer=daniel@bartholomae.name
 
 RUN mkdir /etc/ts
 WORKDIR /etc/ts
