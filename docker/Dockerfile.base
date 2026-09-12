@@ -1,9 +1,6 @@
-FROM ghcr.io/cyber-dojo-languages/javascript-node:04531dc
+FROM ghcr.io/cyber-dojo-languages/typescript:46d7ac9
 LABEL maintainer=jon@jaggersoft.com
 LABEL maintainer=daniel@bartholomae.name
 
-RUN mkdir /etc/ts
-WORKDIR /etc/ts
-COPY package.json .
-RUN npm install
-
+COPY install.sh .
+RUN ./install.sh && rm ./install.sh
