@@ -11,7 +11,12 @@
 # Two of these carry a version. They are the versions this image has always
 # installed, kept rather than floated because nothing here has established that
 # a newer major still works with the rest.
-npm install --prefix /etc/ts \
+# The base image sets NODE_COMPILE_CACHE, and npm runs here as root. Node names
+# the cache directory after the uid that wrote it, so anything root puts there
+# is a directory no kata can ever read: image size paid for nothing. Unsetting
+# it for this one command keeps that weight out, and the warming step that
+# follows, which runs as sandbox, writes the cache a kata does read.
+env --unset=NODE_COMPILE_CACHE npm install --prefix /etc/ts \
   jest \
   ts-jest \
   @types/jest \

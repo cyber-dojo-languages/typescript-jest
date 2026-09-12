@@ -1,6 +1,16 @@
-FROM ghcr.io/cyber-dojo-languages/typescript:46d7ac9
+FROM ghcr.io/cyber-dojo-languages/typescript:be98e00
 LABEL maintainer=jon@jaggersoft.com
 LABEL maintainer=daniel@bartholomae.name
 
 COPY install.sh .
 RUN ./install.sh && rm ./install.sh
+
+# NODE_COMPILE_CACHE comes from the base image, which has already warmed the
+# compiler into it. This warms what this image adds. It runs as sandbox, the
+# user a kata runs as, because node names the cache directory after the uid
+# that wrote it.
+COPY warm_node_compile_cache.sh .
+USER sandbox
+RUN ./warm_node_compile_cache.sh
+USER root
+RUN rm ./warm_node_compile_cache.sh
