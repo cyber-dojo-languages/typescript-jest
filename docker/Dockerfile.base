@@ -1,4 +1,4 @@
-FROM ghcr.io/cyber-dojo-languages/typescript:be98e00
+FROM ghcr.io/cyber-dojo-languages/typescript:24dd599
 LABEL maintainer=jon@jaggersoft.com
 LABEL maintainer=daniel@bartholomae.name
 
